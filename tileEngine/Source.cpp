@@ -1,11 +1,14 @@
 #include <iostream>
 #include "Map.h"
-#include "Camera.h"
+#include "Player.h"
 
 int main() {
 	Map map;
 	
 	sf::RenderWindow window(sf::VideoMode(1920, 1080), "tileEngine", sf::Style::Default);
+
+	Player player(window);
+
 	sf::View camera = window.getDefaultView();
 	window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
@@ -19,7 +22,7 @@ int main() {
 			{
 				camera.zoom(1.0f + event.mouseWheel.delta*0.01f);
 			}
-			switch (event.type)
+			/*switch (event.type)
 			{
 			case sf::Event::KeyPressed:
 				switch (event.key.code)
@@ -37,9 +40,13 @@ int main() {
 					camera.move(5, 0);
 					break;
 				}
-			}
+			}*/
+			player.Update(event, true);
 		}
+		map.draw2DTopMap(window);
 		map.drawMap(window);
+
+		player.Draw(window, false);
 		window.setView(camera);
 		window.display();
 	}

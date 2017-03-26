@@ -1,5 +1,5 @@
 #include "Map.h"
-
+#include <math.h>
 
 Map::Map()
 {
@@ -39,6 +39,11 @@ Map::Map()
 	else {
 		cout << "MAP CAN T BE LOADED!" << endl;
 	}
+
+	twoDTopMap.setTexture(texture);
+	twoDTopMap.setColor(sf::Color::Blue);
+	twoDTopMap.setPosition(0, 0);
+	twoDTopMap.setTextureRect(sf::IntRect(0,0,mapSizes.first*SIZE/2, mapSizes.second*SIZE));
 }
 
 
@@ -66,3 +71,9 @@ bool Map::isWalkable(char x, char y)
 	if (x == '0' && y == '0') return false;
 	if (x == '0' && y == '3') return true;
 }
+
+void Map::draw2DTopMap(sf::RenderWindow & window)
+{
+	window.draw(twoDTopMap);
+}
+

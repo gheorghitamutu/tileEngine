@@ -19,8 +19,11 @@ public:
 	pair <float, float> convert2DToIso(pair<float, float> pair);
 	pair <float, float> convertIsoTo2D(pair<float, float> pair);
 	bool isWalkable(char x, char y);
+	void draw2DTopMap(sf::RenderWindow& window);
 
 private:
+	sf::Sprite twoDTopMap;
+	sf::Texture texture;
 	sf::Texture tileTexture;
 	sf::Sprite tile;
 	sf::Vector2i loadcounter = sf::Vector2i(0, 0);
